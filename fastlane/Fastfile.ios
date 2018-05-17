@@ -27,7 +27,10 @@ platform :ios do
     clean
     gym(
       scheme: 'app', 
-      xcodeproj: "./ios/app.xcodeproj"
+      project: "./ios/app.xcodeproj",
+      clean: true,
+      silent: true,
+      skip_archive: true
     )
   end
 
