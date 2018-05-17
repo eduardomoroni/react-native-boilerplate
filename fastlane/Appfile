@@ -1,0 +1,10 @@
+#iOS
+app_identifier("org.reactjs.native.example.app")
+apple_id("")
+
+itc_team_id("")
+team_id("")
+
+# Android
+json_key_file ""
+package_name "com.app"
