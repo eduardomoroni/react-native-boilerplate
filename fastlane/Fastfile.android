@@ -1,14 +1,14 @@
 platform :android do
   desc 'Clean Android project.'
   lane :clean do
+
     gradle(task: 'clean', project_dir: 'android/')
   end
 
   desc 'Build the Android application.'
   lane :build do
-    clean
-    
     sh "yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses"
+    clean
 
     gradle(
       task: 'assemble',
