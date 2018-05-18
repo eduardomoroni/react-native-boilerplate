@@ -41,10 +41,7 @@ cache:
     - $HOME/.android/build-cache
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then android update sdk -u -a -t tools              ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then android update sdk -u -a -t platform-tools     ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then android update sdk -u -a -t build-tools-23.0.1 ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then android update sdk -u -a -t android-23         ; fi
+  - nvm use && nvm install
 
 install:
   - bundle install
