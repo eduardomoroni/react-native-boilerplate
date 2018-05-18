@@ -7,6 +7,9 @@ platform :android do
   desc 'Build the Android application.'
   lane :build do
     clean
+    
+    sh "yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses"
+
     gradle(
       task: 'assemble',
       build_type: 'Release',

@@ -40,10 +40,6 @@ cache:
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
 
-before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; echo y | android update sdk -u -a -t build-tools-23.0.1; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; echo y | android update sdk -u -a -t android-23        ; fi
-
 install:
   - nvm install && nvm use
   - bundle install

@@ -24,14 +24,11 @@ platform :ios do
 
   desc 'Build the iOS application.'
   lane :build do
+    clean
     gym(
-      scheme: 'app', 
+      scheme: "app",
       project: "./ios/app.xcodeproj",
-      clean: true,
-      silent: true,
-      skip_package_ipa: true,
-      skip_build_archive: true,
-      skip_archive: true
+      silent: true
     )
   end
 
