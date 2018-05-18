@@ -32,8 +32,8 @@ cache:
 
 install:
   - nvm install && nvm use
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; bundle install ; fi
   - npm install
+  - bundle install
 
 script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run android:build ; fi

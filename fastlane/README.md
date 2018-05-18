@@ -15,30 +15,6 @@ Install _fastlane_ using
 or alternatively using `brew cask install fastlane`
 
 # Available Actions
-## Android
-### android clean
-```
-fastlane android clean
-```
-Clean Android project.
-### android build
-```
-fastlane android build
-```
-Build the Android application.
-### android test
-```
-fastlane android test
-```
-Runs all the tests
-### android deploy
-```
-fastlane android deploy
-```
-Deploy a new version to the Google Play
-
-----
-
 ## iOS
 ### ios clean
 ```
@@ -55,11 +31,11 @@ Fetch certificates and provisioning profiles
 fastlane ios build
 ```
 Build the iOS application.
-### ios release
+### ios beta
 ```
-fastlane ios release
+fastlane ios beta
 ```
-Push a new release build to the App Store
+Push a new beta build to TestFlight
 
 ----
 

@@ -1,3 +1,4 @@
-git_url("git@bitbucket.org:some_user/some_secret_repo.git")
-app_identifier("org.reactjs.native.example.app")
-username("some_user@some_email.com")
+git_url("git@bitbucket.org:eduardomoroni/trading-card-manager-secrets.git")
+type("development")
+app_identifier("com.eduardomoroni.example.app")
+username("emoroni@thoughtworks.com") # Your Apple Developer Portal username
