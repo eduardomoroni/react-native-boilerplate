@@ -1,21 +1,25 @@
 language: javascript
 
-android:
-  components:
-    - tools
-    - platform-tools
-    - build-tools-23.0.1
-    - android-23
-  licenses:
-    - 'tools'
-    - 'platform-tools'
-    - 'build-tools-23.0.1'
-    - 'android-23'
-
 matrix:
   include:
     - os: linux
+      before_install:
+        - yes | sdkmanager "build-tools-23.0.1;android-23"
       language: android
+      jdk: oraclejdk8
+      android:
+        components:
+          - tools
+          - platform-tools
+          - build-tools-23.0.1
+          - android-23
+          - extra-google-m2repository
+          - extra-android-m2repository
+        licenses:
+          - 'tools'
+          - 'platform-tools'
+          - 'build-tools-23.0.1'
+          - 'android-23'
       addons:
         apt:
           update: true
