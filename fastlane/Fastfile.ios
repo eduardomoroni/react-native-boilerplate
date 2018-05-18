@@ -28,7 +28,10 @@ platform :ios do
       scheme: 'app', 
       project: "./ios/app.xcodeproj",
       clean: true,
-      silent: true
+      silent: true,
+      skip_package_ipa: true,
+      skip_build_archive: true,
+      skip_archive: true
     )
   end
 
