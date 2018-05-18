@@ -9,9 +9,8 @@ matrix:
         components:
           - build-tools-26.0.2
           - android-26
-      addons:
-        apt:
-          update: true
+    - os: osx
+      osx_image: xcode9.3
 
 branches:
   only:
@@ -33,8 +32,9 @@ cache:
 
 install:
   - nvm install && nvm use
-  - bundle install
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; bundle install ; fi
   - npm install
 
 script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run android:build ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then npm run ios:build ; fi
