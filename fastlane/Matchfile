@@ -1,3 +1,3 @@
-git_url("git@bitbucket.org:eduardomoroni/trading-card-manager-secrets.git")
-app_identifier("org.reactjs.native.example.mtgx")
-username("eduardomoroni@gmail.com")
+git_url("git@bitbucket.org:some_user/some_secret_repo.git")
+app_identifier("org.reactjs.native.example.app")
+username("some_user@some_email.com")
