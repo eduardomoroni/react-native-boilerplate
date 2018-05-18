@@ -1,3 +1,4 @@
-app_identifier("org.reactjs.native.example.app")
-apple_id("eduardomoroni@gmail.com")
-itc_team_id("118646958")
+app_identifier("com.eduardomoroni.example.app")
+apple_id("emoroni@thoughtworks.com")
+itc_team_id("287082")
+team_id("LL62P32G5C")

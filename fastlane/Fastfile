@@ -10,13 +10,13 @@ platform :ios do
   desc 'Fetch certificates and provisioning profiles'
   lane :certificates do
     match(
-      app_identifier: 'org.reactjs.native.example.app',
+      app_identifier: 'com.eduardomoroni.example.app',
       clone_branch_directly: true,
       shallow_clone: true,
       readonly: false
     )
     match(
-      app_identifier: 'org.reactjs.native.example.app',
+      app_identifier: 'com.eduardomoroni.example.app',
       clone_branch_directly: true,
       shallow_clone: true,
       type: 'appstore',
@@ -27,18 +27,17 @@ platform :ios do
   desc 'Build the iOS application.'
   lane :build do
     clean
-    gym(
+    build_app(
       scheme: "app",
       project: "./ios/app.xcodeproj",
       silent: true
     )
   end
 
-  desc "Push a new release build to the App Store"
-  lane :release do
-    certificates
-    build
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
     increment_build_number(xcodeproj: "./ios/app.xcodeproj")
-    upload_to_app_store
+    build
+    upload_to_testflight
   end
 end
