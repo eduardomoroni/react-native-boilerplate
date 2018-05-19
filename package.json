@@ -8,7 +8,7 @@
     "ios": "react-native run-ios",
     "android": "react-native run-android",
     "ios:build": "bundle exec fastlane ios build",
-    "android:build": "./gradlew build"
+    "android:build": "bundle exec fastlane android build"
   },
   "dependencies": {
     "react": "16.3.1",

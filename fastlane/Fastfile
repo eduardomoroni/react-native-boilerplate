@@ -13,20 +13,16 @@ platform :ios do
       app_identifier: "com.eduardomoroni.example.app",
       clone_branch_directly: true,
       shallow_clone: true,
-      readonly: false
-    )
-    match(
-      app_identifier: "com.eduardomoroni.example.app",
-      clone_branch_directly: true,
-      shallow_clone: true,
-      type: 'appstore',
-      readonly: false
+      readonly: false,
+      verbose: true,
+      force: true,
     )
   end
 
   desc 'Build the iOS application.'
   lane :build do
     clean
+    certificates
     build_app(
       scheme: "app",
       project: "./ios/app.xcodeproj",
@@ -39,5 +35,34 @@ platform :ios do
     increment_build_number(xcodeproj: "./ios/app.xcodeproj")
     build
     upload_to_testflight
+  end
+end
+
+platform :android do
+  desc 'Clean Android project.'
+  lane :clean do
+    gradle(task: 'clean', project_dir: 'android/')
+  end
+
+  desc 'Build the Android application.'
+  lane :build do
+    clean
+    gradle(
+      task: 'assemble',
+      build_type: 'Release',
+      project_dir: 'android/'
+    )
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  desc "Deploy a new version to the Google Play"
+  lane :deploy do
+    build
+    gradle(task: "assembleRelease")
+    upload_to_play_store
   end
 end
