@@ -14,7 +14,8 @@
   "dependencies": {
     "react": "16.3.1",
     "react-native": "0.55.4",
-    "react-native-config": "^0.11.5"
+    "react-native-config": "0.11.5",
+    "react-native-navigation": "2.0.2292"
   },
   "devDependencies": {
     "babel-jest": "22.4.3",
