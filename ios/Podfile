@@ -2,20 +2,12 @@ platform :ios, '9.0'
 
 target 'app' do
   pod 'Firebase/Core'
-  pod 'RNI18n', :path => '../node_modules/react-native-i18n'
-
-  target 'appTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end
 
-target 'app-tvOS' do
-
-  target 'app-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
+post_install do |installer_representation|
+  installer_representation.pods_project.targets.each do |target|
+      if target.name == "React"
+          target.remove_from_project
+      end
   end
-
 end
