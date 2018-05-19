@@ -16,8 +16,11 @@ platform :ios do
     match(
       app_identifier: "com.eduardomoroni.example.app",
       clone_branch_directly: true,
+      verbose: true,
+      skip_confirmation: true,
+      force_for_new_devices: true,
       shallow_clone: true,
-      readonly: true,
+      readonly: true
     )
     enable_automatic_code_signing(
       path: "./ios/app.xcodeproj"
