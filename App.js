@@ -1,9 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
+import Config from 'react-native-config';
 import React, { Component } from 'react';
 import {
   Platform,
@@ -29,6 +24,9 @@ export default class App extends Component<Props> {
         </Text>
         <Text style={styles.instructions}>
           To get started, edit App.js
+        </Text>
+        <Text style={styles.instructions}>
+          {`This is a secret ${Config.TEST}`}
         </Text>
         <Text style={styles.instructions}>
           {instructions}
