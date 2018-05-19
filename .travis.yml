@@ -36,9 +36,11 @@ cache:
     - $HOME/.android/build-cache
 
 before_install:
-  - openssl aes-256-cbc -K $encrypted_84b6efd66213_key -iv $encrypted_84b6efd66213_iv -in encrypted/bitbucket.enc -out ~\/.ssh/bitbucket -d
-  - chmod 600 ~\/.ssh/bitbucket
-  
+  - openssl aes-256-cbc -K $encrypted_84b6efd66213_key -iv $encrypted_84b6efd66213_iv -in travis-ci/bitbucket.enc -out bitbucket_key -d
+  - eval "$(ssh-agent)"
+  - chmod 600 bitbucket_key
+  - ssh-add bitbucket_key
+
 install:
   - nvm install && nvm use
   - npm install
