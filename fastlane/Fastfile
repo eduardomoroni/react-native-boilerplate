@@ -17,18 +17,16 @@ platform :ios do
       app_identifier: "com.eduardomoroni.example.app",
       clone_branch_directly: true,
       shallow_clone: true,
-      readonly: false,
-      verbose: true,
-      force: true,
+      readonly: true,
+    )
+    enable_automatic_code_signing(
+      path: "./ios/app.xcodeproj"
     )
   end
 
   desc 'Build the iOS application.'
   lane :build do
     clean
-    enable_automatic_code_signing(
-      path: "./ios/app.xcodeproj"
-    )
     certificates
     build_app(
       scheme: "app",
