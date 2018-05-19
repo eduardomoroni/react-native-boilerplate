@@ -49,8 +49,9 @@ buck-out/
 # https://docs.fastlane.tools/best-practices/source-control/
 
 fastlane/report.xml
-*/fastlane/Preview.html
-*/fastlane/screenshots
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output/
 
 # Bundle artifact
 *.jsbundle

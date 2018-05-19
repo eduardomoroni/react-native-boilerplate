@@ -2,6 +2,7 @@ platform :ios, '9.0'
 
 target 'app' do
   pod 'Firebase/Core'
+  pod 'RNI18n', :path => '../node_modules/react-native-i18n'
 
   target 'appTests' do
     inherit! :search_paths

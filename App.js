@@ -1,4 +1,5 @@
 import Config from 'react-native-config';
+import I18n from 'react-native-i18n';
 import React, { Component } from 'react';
 import {
   Platform,
@@ -14,13 +15,24 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+I18n.fallbacks = true;
+
+I18n.translations = {
+  en: {
+    greeting: 'Hi!',
+  },
+  fr: {
+    greeting: 'Bonjour!',
+  },
+};
+
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+        {`${I18n.t('greeting')} Welcome to React Native!`}
         </Text>
         <Text style={styles.instructions}>
           To get started, edit App.js

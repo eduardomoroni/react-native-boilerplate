@@ -37,7 +37,12 @@ matrix:
     android:
       components:
       - build-tools-26.0.2
+      - build-tools-27.0.3
       - android-26
+      licenses:
+        - build-tools-26.0.2
+        - build-tools-27.0.3
+        - android-26
     script:
       - ./android/gradlew assembleRelease -p android/
   - os: osx

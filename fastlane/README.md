@@ -21,6 +21,11 @@ or alternatively using `brew cask install fastlane`
 fastlane ios clean
 ```
 Clean project medatata
+### ios test
+```
+fastlane ios test
+```
+Runs all the tests
 ### ios certificates
 ```
 fastlane ios certificates

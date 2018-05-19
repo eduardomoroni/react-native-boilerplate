@@ -21,9 +21,15 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - React (0.11.0):
+    - React/Core (= 0.11.0)
+  - React/Core (0.11.0)
+  - RNI18n (2.0.12):
+    - React
 
 DEPENDENCIES:
   - Firebase/Core
+  - RNI18n (from `../node_modules/react-native-i18n`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -33,6 +39,11 @@ SPEC REPOS:
     - FirebaseInstanceID
     - GoogleToolboxForMac
     - nanopb
+    - React
+
+EXTERNAL SOURCES:
+  RNI18n:
+    :path: "../node_modules/react-native-i18n"
 
 SPEC CHECKSUMS:
   Firebase: 4bd804448ab2596794698773d41520a0af101e65
@@ -41,7 +52,9 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  React: ab1a2e21deb34965c38328d5ec40cc7d12c6050a
+  RNI18n: db9be06a40336f04d136f24dd5de3f5eb9f3207c
 
-PODFILE CHECKSUM: 2fb5fd5c2e26336bffd5b4dbee14a2e1bdbd81dd
+PODFILE CHECKSUM: cb9949447593738f09260177bdcc6090eb0531e6
 
 COCOAPODS: 1.5.2
