@@ -1,3 +1,4 @@
+setup_travis
 fastlane_version '2.95.0'
 
 platform :ios do

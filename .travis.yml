@@ -1,5 +1,10 @@
 language: javascript
 
+addons:
+  ssh_known_hosts:
+  - bitbucket.org
+  - 104.192.143.2
+
 matrix:
   include:
     - os: linux
