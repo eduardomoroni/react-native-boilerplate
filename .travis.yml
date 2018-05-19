@@ -19,7 +19,11 @@ cache:
 
 install:
   - nvm install && nvm use
-  - npm install
+  - npm install -g "npm@$(jq -r '.engines.npm' package.json)"
+  - npm ci
+
+after_install:
+  - npm run info
 
 matrix:
   include:
@@ -46,10 +50,6 @@ matrix:
     script:
       - bundle exec fastlane ios certificates
       - xcodebuild -project ios/app.xcodeproj -configuration release -scheme app -derivedDataPath ios/build -allowProvisioningUpdates
-    env:
-      global:
-      - secure: C50tzLn/HqsG261P6Gvva74gbIAolkC78AqBkw6C+7wgEPXRGexT4BfWNZR4LcMjP/Lxh0xcqiekN8ULFfLWTJz0xODfLacYwejWdegMtPbwG4OHxkQZhrKdz6Yv+s/M5yotADKTXL8PBSO+7O4kl1DRqIMQqtBVxc5PmuxRAReUcdK4EZbDiWLUoUrFYfrMlPTti4kcVmna3Ik3pvRhVvzhQtwrG3+NUm7RT0xWGuDlYUVy2zVxw6d0gzSCDwZx/E9N+ELfL873LKkXYn3xFcAgBxrfWBkpGZ1c70Z0SyhJXQttGf0cyPyE/zaRuH9qTNCztIsfsB2CttI/a2vJmEknfVm3cJTnLN0sE3j+8OuW5YIF9amL9KMI2fYJsPSoYzw6JzykZHvP/8ljdNrve28YA2RMZM/D4/OzpdfUiaBx7XuMIqlVJ8RxSIT5WAp1NKAN2kDmSCG1rya+3Ev4eA/Ar2SPf/oe5orqx2ag2JD48nodxvvoZDHRoa/w8//faqx5Q2Sq6tRkojY6l9Z4n/9AmhslyXbweYjXPCok5TnnFpUFrtKsiSXPmZDdC3w0Cz/6JbIhr4/tLKmafn/YIsmKebxBT4XDS0/NGPbQoH/AqZr1/BdrZf6SLICY9bBP7wCJyhLslHEfkBVwmwrNXfe6BYOmGNiMH44G/WAhqMg=
-      - secure: daFvxZXuQALHLHOdpWCxBqwKKdT1HMGiFmTFmYHfmwHZ1Nk8vjXGJte2FBvAWiLhgnvmQL7jzVK8pB/TOJgTvsI6UEzYfS3LFImdHcCQsPeUWvxivqwfUm/ourLUa3OnwOIN6Z1l9oNMQCi2HPOfAkBzLk4bOGH0urvjMFzFshnpvc2nO6S/Yt75UXllvz4XilzIEpZklA91jBfr5d+9QiuxBwQoh4aNP2rrkIh/7LSf9B5le0fDsHdAvFU7UpfLa2s09a1mGnOewQ0uEM8qAb5UZpP+PQUGjdMVeZJbJxTpkyTDKUDAl4w/b+WH/ALCLPoE8KfldPsEy3tDVQz++99IYQW/ozKFEkU/gHWPfxk10YC2lVsOEx+dIGcBkx1YqTlWgqf6iLTfdap89VTaPYEC6ozKiprUJSXBabl8/uDv2jI5sWcfhThKFTuHteAhVY0OXZHRXGxTNkMwR9FIhUJInmvJv4cVv6l9ZjFTNdi8EteFNpHJKlHu59d5RywKQk4CqQhwL/yre8qF8wyqmmVC+GenZ6ztqI8WGMK9Qx0+oJZiVrHLQNNE75g3j6R3AsQIEBar+b0I8xusLtifi88/UVi7NqNVtczyhh977qGdzEzaGnBYodxAlJJ6MCPmm2yrz3G6NRZGKq9eECQgdN0TEgPXLTDxXGy5T2YxJM0=
 
 #script:
 #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then react-native run-ios --no-packager --configuration=release --scheme=app ; fi
@@ -59,3 +59,8 @@ matrix:
 #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bundle exec fastlane ios certificates ; fi
 #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then xcodebuild -project ios/app.xcodeproj -configuration release -scheme app -derivedDataPath ios/build -allowProvisioningUpdates ; fi
 #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./android/gradlew assembleRelease -p android/ ; fi
+
+env:
+  global:
+  - secure: C50tzLn/HqsG261P6Gvva74gbIAolkC78AqBkw6C+7wgEPXRGexT4BfWNZR4LcMjP/Lxh0xcqiekN8ULFfLWTJz0xODfLacYwejWdegMtPbwG4OHxkQZhrKdz6Yv+s/M5yotADKTXL8PBSO+7O4kl1DRqIMQqtBVxc5PmuxRAReUcdK4EZbDiWLUoUrFYfrMlPTti4kcVmna3Ik3pvRhVvzhQtwrG3+NUm7RT0xWGuDlYUVy2zVxw6d0gzSCDwZx/E9N+ELfL873LKkXYn3xFcAgBxrfWBkpGZ1c70Z0SyhJXQttGf0cyPyE/zaRuH9qTNCztIsfsB2CttI/a2vJmEknfVm3cJTnLN0sE3j+8OuW5YIF9amL9KMI2fYJsPSoYzw6JzykZHvP/8ljdNrve28YA2RMZM/D4/OzpdfUiaBx7XuMIqlVJ8RxSIT5WAp1NKAN2kDmSCG1rya+3Ev4eA/Ar2SPf/oe5orqx2ag2JD48nodxvvoZDHRoa/w8//faqx5Q2Sq6tRkojY6l9Z4n/9AmhslyXbweYjXPCok5TnnFpUFrtKsiSXPmZDdC3w0Cz/6JbIhr4/tLKmafn/YIsmKebxBT4XDS0/NGPbQoH/AqZr1/BdrZf6SLICY9bBP7wCJyhLslHEfkBVwmwrNXfe6BYOmGNiMH44G/WAhqMg=
+  - secure: daFvxZXuQALHLHOdpWCxBqwKKdT1HMGiFmTFmYHfmwHZ1Nk8vjXGJte2FBvAWiLhgnvmQL7jzVK8pB/TOJgTvsI6UEzYfS3LFImdHcCQsPeUWvxivqwfUm/ourLUa3OnwOIN6Z1l9oNMQCi2HPOfAkBzLk4bOGH0urvjMFzFshnpvc2nO6S/Yt75UXllvz4XilzIEpZklA91jBfr5d+9QiuxBwQoh4aNP2rrkIh/7LSf9B5le0fDsHdAvFU7UpfLa2s09a1mGnOewQ0uEM8qAb5UZpP+PQUGjdMVeZJbJxTpkyTDKUDAl4w/b+WH/ALCLPoE8KfldPsEy3tDVQz++99IYQW/ozKFEkU/gHWPfxk10YC2lVsOEx+dIGcBkx1YqTlWgqf6iLTfdap89VTaPYEC6ozKiprUJSXBabl8/uDv2jI5sWcfhThKFTuHteAhVY0OXZHRXGxTNkMwR9FIhUJInmvJv4cVv6l9ZjFTNdi8EteFNpHJKlHu59d5RywKQk4CqQhwL/yre8qF8wyqmmVC+GenZ6ztqI8WGMK9Qx0+oJZiVrHLQNNE75g3j6R3AsQIEBar+b0I8xusLtifi88/UVi7NqNVtczyhh977qGdzEzaGnBYodxAlJJ6MCPmm2yrz3G6NRZGKq9eECQgdN0TEgPXLTDxXGy5T2YxJM0=
