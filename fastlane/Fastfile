@@ -11,6 +11,14 @@ platform :ios do
     clean_build_artifacts
   end
 
+  desc "Runs all the tests"
+  lane :test do
+    scan(
+      workspace: "ios/app.xcworkspace",
+      devices: ["iPhone 6s", "iPad Air"]
+    )
+  end
+
   desc 'Fetch certificates and provisioning profiles'
   lane :certificates do
     match(

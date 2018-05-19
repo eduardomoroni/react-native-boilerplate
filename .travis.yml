@@ -51,7 +51,7 @@ matrix:
     script:
       - bundle exec fastlane ios certificates
       - npm install -g react-native-cli
-      - react-native run-ios --no-packager --configuration=release --scheme=app
+      - bundle exec fastlane ios test
 
 #script:
 #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then react-native run-ios --no-packager --configuration=release --scheme=app ; fi
