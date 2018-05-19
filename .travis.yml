@@ -1,51 +1,47 @@
 language: javascript
-
 addons:
   ssh_known_hosts:
   - bitbucket.org
   - 104.192.143.2
-
 matrix:
   include:
-    - os: linux
-      language: android
-      jdk: oraclejdk8
-      android:
-        components:
-          - build-tools-26.0.2
-          - android-26
-    - os: osx
-      osx_image: xcode9.3
-
+  - os: linux
+    language: android
+    jdk: oraclejdk8
+    android:
+      components:
+      - build-tools-26.0.2
+      - android-26
+  - os: osx
+    osx_image: xcode9.3
 branches:
   only:
   - master
-
 before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   bundler: true
   yarn: true
   directories:
-    - node_modules
-    - vendor/bundle
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
-    - $HOME/.android/build-cache
-
+  - node_modules
+  - vendor/bundle
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+  - "$HOME/.android/build-cache"
 before_install:
-  - openssl aes-256-cbc -K $encrypted_84b6efd66213_key -iv $encrypted_84b6efd66213_iv -in travis-ci/bitbucket.enc -out bitbucket_key -d
-  - eval "$(ssh-agent)"
-  - chmod 600 bitbucket_key
-  - ssh-add bitbucket_key
-
+- openssl aes-256-cbc -K $encrypted_84b6efd66213_key -iv $encrypted_84b6efd66213_iv
+  -in travis-ci/bitbucket.enc -out bitbucket_key -d
+- eval "$(ssh-agent)"
+- chmod 600 bitbucket_key
+- ssh-add bitbucket_key
 install:
-  - nvm install && nvm use
-  - npm install
-  - bundle install
-
+- nvm install && nvm use
+- npm install
+- bundle install
 script:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run android:build ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then npm run ios:build ; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run android:build ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then npm run ios:build ; fi
+env:
+  global:
+    secure: C50tzLn/HqsG261P6Gvva74gbIAolkC78AqBkw6C+7wgEPXRGexT4BfWNZR4LcMjP/Lxh0xcqiekN8ULFfLWTJz0xODfLacYwejWdegMtPbwG4OHxkQZhrKdz6Yv+s/M5yotADKTXL8PBSO+7O4kl1DRqIMQqtBVxc5PmuxRAReUcdK4EZbDiWLUoUrFYfrMlPTti4kcVmna3Ik3pvRhVvzhQtwrG3+NUm7RT0xWGuDlYUVy2zVxw6d0gzSCDwZx/E9N+ELfL873LKkXYn3xFcAgBxrfWBkpGZ1c70Z0SyhJXQttGf0cyPyE/zaRuH9qTNCztIsfsB2CttI/a2vJmEknfVm3cJTnLN0sE3j+8OuW5YIF9amL9KMI2fYJsPSoYzw6JzykZHvP/8ljdNrve28YA2RMZM/D4/OzpdfUiaBx7XuMIqlVJ8RxSIT5WAp1NKAN2kDmSCG1rya+3Ev4eA/Ar2SPf/oe5orqx2ag2JD48nodxvvoZDHRoa/w8//faqx5Q2Sq6tRkojY6l9Z4n/9AmhslyXbweYjXPCok5TnnFpUFrtKsiSXPmZDdC3w0Cz/6JbIhr4/tLKmafn/YIsmKebxBT4XDS0/NGPbQoH/AqZr1/BdrZf6SLICY9bBP7wCJyhLslHEfkBVwmwrNXfe6BYOmGNiMH44G/WAhqMg=
