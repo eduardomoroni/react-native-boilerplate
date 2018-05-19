@@ -31,11 +31,40 @@ Fetch certificates and provisioning profiles
 fastlane ios build
 ```
 Build the iOS application.
+### ios test_build
+```
+fastlane ios test_build
+```
+
 ### ios beta
 ```
 fastlane ios beta
 ```
 Push a new beta build to TestFlight
+
+----
+
+## Android
+### android clean
+```
+fastlane android clean
+```
+Clean Android project.
+### android build
+```
+fastlane android build
+```
+Build the Android application.
+### android test
+```
+fastlane android test
+```
+Runs all the tests
+### android deploy
+```
+fastlane android deploy
+```
+Deploy a new version to the Google Play
 
 ----
 

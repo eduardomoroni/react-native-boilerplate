@@ -26,11 +26,24 @@ platform :ios do
   desc 'Build the iOS application.'
   lane :build do
     clean
+    enable_automatic_code_signing(
+      path: "./ios/app.xcodeproj"
+    )
     certificates
     build_app(
       scheme: "app",
       project: "./ios/app.xcodeproj",
-      silent: true
+      silent: true,
+      skip_archive: true,
+      export_method: "development"
+    )
+  end
+
+  lane :test_build do
+    xcodebuild(
+      archive: false,
+      scheme: "app",
+      project: "./ios/app.xcodeproj",
     )
   end
 
