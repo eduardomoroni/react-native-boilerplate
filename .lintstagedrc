@@ -1,0 +1,9 @@
+{
+"linters": {
+    "*.js,*.jsx": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  ignore: ['**/node_modules/**/*.js']
+}
