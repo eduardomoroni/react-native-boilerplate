@@ -1,12 +1,10 @@
 branches:
   only:
-    - master
-
+  - master
 addons:
   ssh_known_hosts:
   - bitbucket.org
   - 104.192.143.2
-
 cache:
   bundler: true
   cocoapods: true
@@ -18,56 +16,44 @@ cache:
   - "$HOME/.gradle/caches/"
   - "$HOME/.gradle/wrapper/"
   - "$HOME/.android/build-cache"
-
 install:
-  - nvm install && nvm use
-  - npm install -g "npm@$(jq -r '.engines.npm' package.json)"
-  - npm ci
-
+- nvm install && nvm use
+- npm install -g "npm@$(jq -r '.engines.npm' package.json)"
+- npm ci
 after_install:
-  - npm run info
-
+- npm run info
 matrix:
   include:
   - os: linux
     language: android
     jdk: oraclejdk8
     before_cache:
-      - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-      - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+    - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+    - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
     android:
       components:
       - build-tools-27.0.3
       - android-27
     before_install:
-      - sdkmanager --list
-      - yes | sdkmanager "platforms;android-27"
-      - yes | sdkmanager "build-tools;27.0.3"
+    - openssl aes-256-cbc -K $encrypted_aff1b2d8f811_key -iv $encrypted_aff1b2d8f811_iv -in travis-ci/google-services.json.enc -out android/app/google-services.json -d
+    - sdkmanager --list
+    - yes | sdkmanager "platforms;android-27"
+    - yes | sdkmanager "build-tools;27.0.3"
     script:
-      - ./android/gradlew assembleRelease -p android/
+    - "./android/gradlew assembleRelease -p android/"
   - os: osx
     osx_image: xcode9.3
     podfile: ios/Podfile
     before_install:
-      - openssl aes-256-cbc -K $encrypted_84b6efd66213_key -iv $encrypted_84b6efd66213_iv -in travis-ci/bitbucket_key.enc -out bitbucket_key -d
-      - eval "$(ssh-agent)"
-      - chmod 600 bitbucket_key
-      - ssh-add bitbucket_key
-      - bundle install
-      - brew install cocoapods
-      - pod install --project-directory=ios/
+    - openssl aes-256-cbc -K $encrypted_84b6efd66213_key -iv $encrypted_84b6efd66213_iv -in travis-ci/bitbucket_key.enc -out bitbucket_key -d
+    - eval "$(ssh-agent)"
+    - chmod 600 bitbucket_key
+    - ssh-add bitbucket_key
+    - bundle install
+    - bundle exec pod repo update
+    - bundle exec pod install --project-directory=ios/
     script:
-      - bundle exec fastlane ios test
-
-#script:
-#- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then react-native run-ios --no-packager --configuration=release --scheme=app ; fi
-#- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then react-native run-android --no-packager ; fi
-#- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bundle exec fastlane ios build ; fi
-#- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bundle exec fastlane android build ; fi
-#- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bundle exec fastlane ios certificates ; fi
-#- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then xcodebuild -project ios/app.xcodeproj -configuration release -scheme app -derivedDataPath ios/build -allowProvisioningUpdates ; fi
-#- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./android/gradlew assembleRelease -p android/ ; fi
-
+    - bundle exec fastlane ios test
 env:
   global:
   - secure: C50tzLn/HqsG261P6Gvva74gbIAolkC78AqBkw6C+7wgEPXRGexT4BfWNZR4LcMjP/Lxh0xcqiekN8ULFfLWTJz0xODfLacYwejWdegMtPbwG4OHxkQZhrKdz6Yv+s/M5yotADKTXL8PBSO+7O4kl1DRqIMQqtBVxc5PmuxRAReUcdK4EZbDiWLUoUrFYfrMlPTti4kcVmna3Ik3pvRhVvzhQtwrG3+NUm7RT0xWGuDlYUVy2zVxw6d0gzSCDwZx/E9N+ELfL873LKkXYn3xFcAgBxrfWBkpGZ1c70Z0SyhJXQttGf0cyPyE/zaRuH9qTNCztIsfsB2CttI/a2vJmEknfVm3cJTnLN0sE3j+8OuW5YIF9amL9KMI2fYJsPSoYzw6JzykZHvP/8ljdNrve28YA2RMZM/D4/OzpdfUiaBx7XuMIqlVJ8RxSIT5WAp1NKAN2kDmSCG1rya+3Ev4eA/Ar2SPf/oe5orqx2ag2JD48nodxvvoZDHRoa/w8//faqx5Q2Sq6tRkojY6l9Z4n/9AmhslyXbweYjXPCok5TnnFpUFrtKsiSXPmZDdC3w0Cz/6JbIhr4/tLKmafn/YIsmKebxBT4XDS0/NGPbQoH/AqZr1/BdrZf6SLICY9bBP7wCJyhLslHEfkBVwmwrNXfe6BYOmGNiMH44G/WAhqMg=
