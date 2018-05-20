@@ -22,20 +22,18 @@ install:
 - npm ci
 after_install:
 - npm run info
+- chmod -R +x travis-ci/
+- ./travis-ci/decrypt.sh
 matrix:
   include:
   - os: linux
     language: android
     jdk: oraclejdk8
-    before_cache:
-    - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-    - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
     android:
       components:
       - build-tools-27.0.3
       - android-27
     before_install:
-    - openssl aes-256-cbc -K $encrypted_aff1b2d8f811_key -iv $encrypted_aff1b2d8f811_iv -in travis-ci/google-services.json.enc -out android/app/google-services.json -d
     - sdkmanager --list
     - yes | sdkmanager "platforms;android-27"
     - yes | sdkmanager "build-tools;27.0.3"
@@ -45,14 +43,10 @@ matrix:
     osx_image: xcode9.3
     podfile: ios/Podfile
     before_install:
-    - openssl aes-256-cbc -K $encrypted_aff1b2d8f811_key -iv $encrypted_aff1b2d8f811_iv -in travis-ci/GoogleService-Info.plist.enc -out ios/GoogleService-Info.plist -d
-    - openssl aes-256-cbc -K $encrypted_84b6efd66213_key -iv $encrypted_84b6efd66213_iv -in travis-ci/bitbucket_key.enc -out bitbucket_key -d
-    - eval "$(ssh-agent)"
-    - chmod 600 bitbucket_key
-    - ssh-add bitbucket_key
     - bundle install
     - bundle exec pod repo update
     - bundle exec pod install --project-directory=ios/
+    - brew install jq
     script:
     - bundle exec fastlane ios test
 env:

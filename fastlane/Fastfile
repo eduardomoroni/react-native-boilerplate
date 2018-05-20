@@ -14,8 +14,7 @@ platform :ios do
   desc "Runs all the tests"
   lane :test do
     scan(
-      workspace: "ios/app.xcworkspace",
-      devices: ["iPhone 6s", "iPad Air"]
+      workspace: "ios/app.xcworkspace"
     )
   end
 
@@ -89,6 +88,6 @@ platform :android do
   lane :deploy do
     build
     gradle(task: "assembleRelease")
-    upload_to_play_store
+    #upload_to_play_store
   end
 end

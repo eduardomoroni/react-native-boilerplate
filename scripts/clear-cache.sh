@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 watchman watch-del-all
 rm -rf node_modules
 npm install
