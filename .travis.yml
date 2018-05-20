@@ -16,15 +16,14 @@ cache:
   - "$HOME/.gradle/caches/"
   - "$HOME/.gradle/wrapper/"
   - "$HOME/.android/build-cache"
-before_install:
-- echo "TESTING MULTIPLE BEFORE INSTAL"
 install:
 - nvm install && nvm use
 - npm install -g "npm@$(jq -r '.engines.npm' package.json)"
 - npm ci
-- npm run info
+before_script:
 - chmod -R +x travis-ci/
 - ./travis-ci/decrypt.sh
+- npm run info
 matrix:
   include:
   - os: linux
