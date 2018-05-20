@@ -8,9 +8,9 @@ addons:
   - 104.192.143.2
 
 cache:
-  - bundler
-  - cocoapods
-  - yarn
+  bundler: true
+  cocoapods: true
+  yarn: true
   directories:
   - node_modules
   - vendor/bundle
