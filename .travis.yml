@@ -41,6 +41,8 @@ matrix:
       licenses:
         - 'build-tools+'
         - 'android+'
+    before_install:
+      - yes | sudo sdkmanager --licenses
     script:
       - ./android/gradlew assembleRelease -p android/
   - os: osx
@@ -52,8 +54,6 @@ matrix:
       - ssh-add bitbucket_key
       - bundle install
     script:
-      - bundle exec fastlane ios certificates
-      - npm install -g react-native-cli
       - bundle exec fastlane ios test
 
 #script:
