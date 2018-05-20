@@ -22,7 +22,7 @@ install:
 - npm ci
 before_script:
 - chmod -R +x travis-ci/
-- ./travis-ci/decrypt.sh
+- "./travis-ci/decrypt.sh"
 - npm run info
 matrix:
   include:
