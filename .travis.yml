@@ -39,11 +39,10 @@ matrix:
       components:
       - build-tools-27.0.3
       - android-27
-      licenses:
-        - 'build-tools+'
-        - 'android+'
     before_install:
-      - yes | sdkmanager "platforms;android-27;build-tools-27.0.3"
+      - sdkmanager --list
+      - yes | sdkmanager "platforms;android-27"
+      - yes | sdkmanager "build-tools;27.0.3"
     script:
       - ./android/gradlew assembleRelease -p android/
   - os: osx
@@ -55,6 +54,7 @@ matrix:
       - chmod 600 bitbucket_key
       - ssh-add bitbucket_key
       - bundle install
+      - brew install cocoapods
       - pod install --project-directory=ios/
     script:
       - bundle exec fastlane ios test
