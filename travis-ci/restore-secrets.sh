@@ -17,4 +17,4 @@ SECRETS_PATH="trading-card-manager-secrets/secrets"
 git clone --depth 1 "$REPO_SSH_URL"
 mv "$SECRETS_PATH/google-services.json" android/app/google-services.json
 mv "$SECRETS_PATH/GoogleService-Info.plist" ios/GoogleService-Info.plist
-mv "$SECRETS_PATH/secrets/.env" .env
+mv "$SECRETS_PATH/.env" .env

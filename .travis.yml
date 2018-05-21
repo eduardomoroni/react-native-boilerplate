@@ -16,14 +16,15 @@ cache:
   - "$HOME/.gradle/caches/"
   - "$HOME/.gradle/wrapper/"
   - "$HOME/.android/build-cache"
+before_install:
+- chmod -R +x travis-ci/
+- "./travis-ci/restore-secrets.sh"
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then "./travis-ci/ios-before-install.sh"       ; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then "./travis-ci/android-before-install.sh" ; fi
 install:
 - nvm install && nvm use
 - npm install -g "npm@$(jq -r '.engines.npm' package.json)"
 - npm ci
-before_script:
-- chmod -R +x travis-ci/
-- "./travis-ci/decrypt.sh"
-- npm run info
 matrix:
   include:
   - os: linux
@@ -33,19 +34,11 @@ matrix:
       components:
       - build-tools-27.0.3
       - android-27
-    before_install:
-    - sdkmanager --list
-    - yes | sdkmanager "platforms;android-27"
-    - yes | sdkmanager "build-tools;27.0.3"
     script:
     - "./android/gradlew assembleRelease -p android/"
   - os: osx
     osx_image: xcode9.3
     podfile: ios/Podfile
-    before_install:
-    - bundle install
-    - bundle exec pod repo update
-    - bundle exec pod install --project-directory=ios/
     script:
     - bundle exec fastlane ios test
 env:
