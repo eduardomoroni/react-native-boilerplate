@@ -59,7 +59,7 @@ fastlane/test_output/
 # We recommend against adding the Pods directory to your .gitignore. However
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
-# 
+#
 # Note: if you ignore the Pods directory, make sure to uncomment
 # `pod install` in .travis.yml
 #
@@ -70,3 +70,5 @@ ios/GoogleService-Info.plist
 android/app/google-services.json
 
 .env
+ENCRYPT_PASSWORD.txt
+.vscode/
