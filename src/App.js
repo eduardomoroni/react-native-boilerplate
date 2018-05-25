@@ -4,6 +4,19 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import { Navigation } from 'react-native-navigation';
+Navigation.registerComponent(`navigation.playground.WelcomeScreen`, () => App);
+
+Navigation.events().registerAppLaunchedListener(() => {
+  Navigation.setRoot({
+    root: {
+      component: {
+        name: 'navigation.playground.WelcomeScreen'
+      }
+    }
+  });
+});
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
