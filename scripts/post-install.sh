@@ -1,11 +1,16 @@
 #!/usr/bin/env sh
 
-if [ -z "$CI" ]
-then
+# MACOS ENVIRONMENT
+if [[ "$OSTYPE" == "darwin"* ]]; then
   bundle install
+  bundle exec pod repo update
   bundle exec pod install --project-directory=ios/
-  echo 'DO NOT FORGET TO SETUP GOOGLE SECRETS ON BOTH ANDROID AND IOS'
   sh scripts/workaround/ios-rctfont-workaround.sh
+fi
+
+if [[ "$CI" != "" ]]; then
+  echo 'SETTING UP GOOGLE SECRETS'
+  sh travis-ci/restore-secrets.sh
 else
-  echo "Skipping post install on CI Environment"
+  echo 'DO NOT FORGET TO SETUP GOOGLE SECRETS ON BOTH ANDROID AND IOS'
 fi
