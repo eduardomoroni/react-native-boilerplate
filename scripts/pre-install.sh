@@ -1,6 +1,11 @@
 #!/usr/bin/env sh
 
-nvm install
-nvm use
-npm install -g "npm@$(jq -r '.engines.npm' package.json)"
+if [ -z "$CI" ]
+then
+  nvm install
+  nvm use
+  npm install -g "npm@$(jq -r '.engines.npm' package.json)"
 # CONFIGURAR RVM
+else
+    echo "Skipping Pre install on CI Environment"
+fi

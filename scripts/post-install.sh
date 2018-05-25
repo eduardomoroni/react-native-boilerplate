@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
 
-bundle install
-bundle exec pod install --project-directory=ios/
-echo 'DO NOT FORGET TO SETUP GOOGLE SECRETS ON BOTH ANDROID AND IOS'
+if [ -z "$CI" ]
+then
+  bundle install
+  bundle exec pod install --project-directory=ios/
+  echo 'DO NOT FORGET TO SETUP GOOGLE SECRETS ON BOTH ANDROID AND IOS'
+else
+    echo "Skipping post install on CI Environment"
+fi
