@@ -21,6 +21,8 @@ before_install:
 - chmod -R +x travis-ci/
 - chmod -R +x scripts/
 install:
+- nvm install && nvm use
+- npm install -g "npm@$(jq -r '.engines.npm' package.json)"
 - npm ci
 matrix:
   include:
