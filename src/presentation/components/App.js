@@ -1,10 +1,11 @@
 import Config from 'react-native-config';
 import I18n from 'react-native-i18n';
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { decrementCounter, incrementCounter } from '../redux/actions/counter';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Platform, StyleSheet, Text, View, Button } from 'react-native';
+
+import { incrementCounter, decrementCounter } from '../redux/counter';
 import { styles } from './App.styles';
 
 const instructions = Platform.select({
@@ -50,10 +51,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   increment: () => dispatch(incrementCounter()),
-  decrement: () => dispatch(decrementCounter())
+  decrement: () => dispatch(decrementCounter()),
 });
 
-export const App = connect(mapStateToProps, mapDispatchToProps)(
-  AppComponent
-);
-
+export const App = connect(mapStateToProps, mapDispatchToProps)(AppComponent);

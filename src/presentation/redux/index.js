@@ -1,7 +1,18 @@
+import Maybe from 'data.maybe';
 import { createLogger } from 'redux-logger';
-import { applyMiddleware, createStore as create } from 'redux';
+import { combineReducers, applyMiddleware, createStore as create } from 'redux';
+import { counterReducer } from './counter';
 
-import { rootReducer } from './reducers/index';
+const createFunctionalReducer = ({ reducers, initialState }) => {
+  return (state = initialState, action) =>
+    Maybe.fromNullable(reducers[action.type])
+      .map(handler => handler(state, action))
+      .getOrElse(state);
+};
+
+const reducers = {
+  counter: createFunctionalReducer(counterReducer),
+};
 
 export const createStore = () => {
   const middleware = [];
@@ -10,5 +21,5 @@ export const createStore = () => {
     middleware.push(createLogger());
   }
 
-  return create(rootReducer, applyMiddleware(...middleware));
+  return create(combineReducers(reducers), applyMiddleware(...middleware));
 };
