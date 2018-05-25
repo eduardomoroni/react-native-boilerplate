@@ -11,17 +11,6 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-I18n.fallbacks = true;
-
-I18n.translations = {
-  en: {
-    greeting: 'Hi!',
-  },
-  fr: {
-    greeting: 'Bonjour!',
-  },
-};
-
 type Props = {};
 export class App extends Component<Props> {
   render() {
