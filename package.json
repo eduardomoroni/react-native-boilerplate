@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "setup": "cd ios && pod install",
+    "clean": "sh scripts/clear-cache.sh",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "info": "node node_modules/react-native/local-cli/cli.js info",
     "test": "jest",
