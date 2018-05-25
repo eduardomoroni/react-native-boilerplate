@@ -18,22 +18,28 @@
     "prettier": "prettier --write 'src/**/*.js'"
   },
   "dependencies": {
-    "husky": "0.14.3",
-    "lint-staged": "7.1.1",
-    "prettier": "1.12.1",
+    "data.maybe": "1.2.2",
     "react": "16.3.1",
     "react-native": "0.55.4",
     "react-native-config": "0.11.5",
     "react-native-firebase": "4.2.0",
     "react-native-i18n": "2.0.12",
     "react-native-navigation": "2.0.2295",
-    "react-native-vector-icons": "4.6.0"
+    "react-native-vector-icons": "4.6.0",
+    "react-redux": "5.0.7",
+    "redux": "4.0.0",
+    "redux-form": "7.3.0",
+    "redux-logger": "3.0.6"
   },
   "devDependencies": {
+    "husky": "0.14.3",
+    "lint-staged": "7.1.1",
+    "prettier": "1.12.1",
     "babel-jest": "22.4.3",
     "babel-preset-react-native": "4.0.0",
     "jest": "22.4.3",
-    "react-test-renderer": "16.3.1"
+    "react-test-renderer": "16.3.1",
+    "redux-devtools": "3.4.1"
   },
   "jest": {
     "preset": "react-native"

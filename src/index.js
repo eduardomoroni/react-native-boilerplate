@@ -1,3 +1,3 @@
-import { initialize } from './presentation';
+import Presentation from './presentation';
 
-initialize();
+Presentation();

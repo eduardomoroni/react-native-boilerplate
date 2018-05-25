@@ -1,7 +1,7 @@
-import { registerListeners } from './listeners'
-import { registerScreens } from './screens'
+import { registerListeners } from './listeners';
+import { registerScreens } from './screens';
 
 export default () => {
-  registerScreens()
-  registerListeners()
-}
+  registerScreens();
+  registerListeners();
+};

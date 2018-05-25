@@ -1,10 +1,20 @@
 import { Navigation } from 'react-native-navigation';
-import { App } from '../App';
+import { Provider } from 'react-redux';
+
+import { createStore } from '../redux';
+import { decorateWithProvider } from './reduxIntegration';
+
+import { App } from '../components/App';
 
 export const SCREENS = {
-  HOME: `navigation.playground.WelcomeScreen`
-}
+  HOME: `navigation.playground.WelcomeScreen`,
+};
 
 export const registerScreens = () => {
-  Navigation.registerComponent(SCREENS.HOME, () => App);
-}
+  const store = createStore();
+
+  Navigation.registerComponent(
+    SCREENS.HOME,
+    decorateWithProvider(App, store, Provider),
+  );
+};
