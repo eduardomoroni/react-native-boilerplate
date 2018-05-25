@@ -9,7 +9,9 @@ if [[ "$CI" != "" ]];
     echo 'INSTALLING NON MACOS CI DEPENDENCIES'
     sdkmanager --list
     yes | sdkmanager "platforms;android-27"
+    yes | sdkmanager "platforms;android-25"
     yes | sdkmanager "build-tools;27.0.3"
+    scripts/android-emulator.sh create
   fi
 fi
 

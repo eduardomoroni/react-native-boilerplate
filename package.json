@@ -10,6 +10,7 @@
     "info": "node node_modules/react-native/local-cli/cli.js info",
     "test": "jest",
     "ios": "react-native run-ios",
+    "preandroid": "scripts/android-emulator.sh start",
     "android": "react-native run-android",
     "ios:build": "bundle exec fastlane ios build",
     "android:build": "bundle exec fastlane android build",
