@@ -2,6 +2,7 @@ package com.app;
 
 import android.app.Application;
 
+import com.reactnativenavigation.NavigationApplication;
 import com.facebook.react.ReactApplication;
 import com.oblador.vectoricons.VectorIconsPackage;
 import io.invertase.firebase.RNFirebasePackage;
@@ -16,7 +17,23 @@ import com.facebook.soloader.SoLoader;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainApplication extends Application implements ReactApplication {
+public class MainApplication extends NavigationApplication {
+
+   @Override
+   public boolean isDebug() {
+       return BuildConfig.DEBUG;
+   }
+
+   @Override
+   public List<ReactPackage> createAdditionalReactPackages() {
+      return Arrays.<ReactPackage>asList(
+          new MainReactPackage(),
+            new VectorIconsPackage(),
+            new RNFirebasePackage(),
+            new ReactNativeConfigPackage(),
+            new RNI18nPackage()
+      );
+   }
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
