@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 watchman watch-del-all
 rm -rf ios/build

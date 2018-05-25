@@ -1,7 +1,7 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-# MACOS ENVIRONMENT
 if [[ "$OSTYPE" == "darwin"* ]]; then
+  echo 'INSTALLING MACOS DEPENDENCIES'
   bundle install
   bundle exec pod repo update
   bundle exec pod install --project-directory=ios/

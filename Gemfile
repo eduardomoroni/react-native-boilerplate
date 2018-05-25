@@ -3,5 +3,3 @@ source "https://rubygems.org"
 
 gem 'fastlane', '~> 2.95'
 gem 'cocoapods', '~> 1.5.2'
-gem "httparty"
-gem "danger"

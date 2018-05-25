@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "preinstall": "sh scripts/pre-install.sh",
-    "postinstall": "sh scripts/post-install.sh",
-    "clean": "sh scripts/clear-cache.sh",
+    "preinstall": "scripts/pre-install.sh",
+    "postinstall": "scripts/post-install.sh",
+    "clean": "scripts/clear-cache.sh",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "info": "node node_modules/react-native/local-cli/cli.js info",
     "test": "jest",
@@ -17,16 +17,16 @@
     "prettier": "prettier --write 'src/**/*.js'"
   },
   "dependencies": {
-    "husky": "^0.14.3",
-    "lint-staged": "^7.1.1",
-    "prettier": "^1.12.1",
+    "husky": "0.14.3",
+    "lint-staged": "7.1.1",
+    "prettier": "1.12.1",
     "react": "16.3.1",
     "react-native": "0.55.4",
-    "react-native-config": "^0.11.5",
-    "react-native-firebase": "^4.2.0",
-    "react-native-i18n": "^2.0.12",
-    "react-native-navigation": "^2.0.2295",
-    "react-native-vector-icons": "^4.6.0"
+    "react-native-config": "0.11.5",
+    "react-native-firebase": "4.2.0",
+    "react-native-i18n": "2.0.12",
+    "react-native-navigation": "2.0.2295",
+    "react-native-vector-icons": "4.6.0"
   },
   "devDependencies": {
     "babel-jest": "22.4.3",

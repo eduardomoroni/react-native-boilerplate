@@ -1,13 +1,12 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-# CI ENVIRONMENT
 if [[ "$CI" != "" ]];
   then
   if [[ "$OSTYPE" == "darwin"* ]]; then
-    # MACOS CI ENVIRONMENT
+    echo 'INSTALLING MACOS CI DEPENDENCIES'
     brew install jq
   else
-    # NON MACOS CI ENVIRONMENT
+    echo 'INSTALLING NON MACOS CI DEPENDENCIES'
     sdkmanager --list
     yes | sdkmanager "platforms;android-27"
     yes | sdkmanager "build-tools;27.0.3"
