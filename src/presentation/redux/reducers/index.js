@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import Maybe from 'data.maybe';
+import { counterReducer } from './counter';
 
 export const createFunctionalReducer = reducerConfig => {
   const { actionHandlers, initialState } = reducerConfig;
@@ -9,6 +10,8 @@ export const createFunctionalReducer = reducerConfig => {
       .getOrElse(state);
 };
 
-const reducers = { ok: () => ({}) };
+const reducers = {
+  counter: createFunctionalReducer(counterReducer)
+};
 
 export const rootReducer = combineReducers(reducers);
