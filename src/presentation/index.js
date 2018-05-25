@@ -1,7 +1,7 @@
-import i18n from './i18n';
-import Navigation from './navigation';
+import { initializeI18n } from './i18n';
+import { initializeNavigation } from './navigation';
 
-export default () => {
-  i18n();
-  Navigation();
+export const PresentationLayer = () => {
+  initializeI18n();
+  initializeNavigation();
 };

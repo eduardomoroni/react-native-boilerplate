@@ -1,3 +1,7 @@
-import Presentation from './presentation';
+import { DataLayer } from './data';
+import { DomainLayer } from './domain';
+import { PresentationLayer } from './presentation';
 
-Presentation();
+DataLayer();
+DomainLayer();
+PresentationLayer();

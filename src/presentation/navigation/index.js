@@ -1,7 +1,7 @@
 import { registerListeners } from './listeners';
 import { registerScreens } from './screens';
 
-export default () => {
+export const initializeNavigation = () => {
   registerScreens();
   registerListeners();
 };
