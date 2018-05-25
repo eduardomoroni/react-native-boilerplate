@@ -23,7 +23,7 @@ I18n.translations = {
 };
 
 type Props = {};
-export default class App extends Component<Props> {
+export class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
