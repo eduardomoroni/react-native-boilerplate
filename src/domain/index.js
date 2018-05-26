@@ -1,1 +1,3 @@
-export const DomainLayer = () => {};
+// @flow strict
+
+export const DomainLayer = (): void => {};

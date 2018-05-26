@@ -1,3 +1,5 @@
+// @flow strict
+
 import { Navigation } from 'react-native-navigation';
 import { SCREENS } from './screens';
 

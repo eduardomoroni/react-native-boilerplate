@@ -19,12 +19,22 @@
 ; Ignore metro
 .*/node_modules/metro/.*
 
+; Ignore React Native
+.*/node_modules/react-native/Libraries/.*
+
 [include]
 
 [libs]
 node_modules/react-native/Libraries/react-native/react-native-interface.js
 node_modules/react-native/flow/
 node_modules/react-native/flow-github/
+
+[lints]
+sketchy-null=warn
+sketchy-null-bool=off
+nonstrict-import=warn
+untyped-import=warn
+untyped-type-import=warn
 
 [options]
 emoji=true
@@ -50,5 +60,13 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowIssue\\((\\(<VERSION>\\)? *\\(site=[a-z,_]*
 suppress_comment=\\(.\\|\n\\)*\\$FlowFixedInNextDeploy
 suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
 
+[strict]
+unclear-type
+unsafe-getters-setters
+#nonstrict-import
+#untyped-import
+#untyped-type-import
+
 [version]
-^0.67.0
+0.73.0
+

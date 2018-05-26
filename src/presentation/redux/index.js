@@ -1,9 +1,15 @@
+// @flow strict
+
 import Maybe from 'data.maybe';
 import { createLogger } from 'redux-logger';
-import { combineReducers, applyMiddleware, createStore as create } from 'redux';
+import { combineReducers, applyMiddleware, createStore } from 'redux';
 import { counterReducer } from './counter';
+import type { FunctionalReducerConfigType } from './types';
 
-const createFunctionalReducer = ({ reducers, initialState }) => {
+const createFunctionalReducer = ({
+  reducers,
+  initialState,
+}: FunctionalReducerConfigType) => {
   return (state = initialState, action) =>
     Maybe.fromNullable(reducers[action.type])
       .map(handler => handler(state, action))
@@ -14,12 +20,12 @@ const reducers = {
   counter: createFunctionalReducer(counterReducer),
 };
 
-export const createStore = () => {
+export const getStore = () => {
   const middleware = [];
 
   if (process.env.NODE_ENV !== 'production') {
     middleware.push(createLogger());
   }
 
-  return create(combineReducers(reducers), applyMiddleware(...middleware));
+  return createStore(combineReducers(reducers), applyMiddleware(...middleware));
 };

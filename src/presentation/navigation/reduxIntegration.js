@@ -1,7 +1,15 @@
-import React from 'react';
+// @flow strict
 
-export const decorateWithProvider = (Component, Store, Provider) => {
-  const wrappedComponent = class Scene extends React.Component {
+import * as React from 'react';
+import type { Provider as ProviderType } from 'react-redux';
+import type { Store as StoreType } from 'redux';
+
+export const decorateWithProvider = (
+  Component: React.ComponentType<*>,
+  Store: StoreType,
+  Provider: ProviderType,
+) => {
+  const wrappedComponent = class Scene extends React.Component<*> {
     render() {
       return (
         <Provider store={Store}>

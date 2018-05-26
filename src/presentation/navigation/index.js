@@ -1,3 +1,5 @@
+// @flow strict
+
 import { registerListeners } from './listeners';
 import { registerScreens } from './screens';
 

@@ -1,3 +1,5 @@
+// @flow strict
+
 import Config from 'react-native-config';
 import I18n from 'react-native-i18n';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -15,7 +17,12 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
+type Props = {
+  decrement: () => void,
+  increment: () => void,
+  counter: number,
+};
+
 export class AppComponent extends Component<Props> {
   render() {
     return (

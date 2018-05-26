@@ -1,3 +1,5 @@
+// @flow strict
+
 import I18n from 'react-native-i18n';
 
 export const initializeI18n = () => {

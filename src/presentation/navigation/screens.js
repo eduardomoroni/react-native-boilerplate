@@ -1,7 +1,9 @@
+// @flow strict
+
 import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
 
-import { createStore } from '../redux';
+import { getStore } from '../redux';
 import { decorateWithProvider } from './reduxIntegration';
 
 import { App } from '../components/App';
@@ -11,7 +13,7 @@ export const SCREENS = {
 };
 
 export const registerScreens = () => {
-  const store = createStore();
+  const store = getStore();
 
   Navigation.registerComponent(
     SCREENS.HOME,
