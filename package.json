@@ -18,7 +18,8 @@
     "flow": "flow",
     "flow:coverage": "flow coverage",
     "flow:install-libdefs": "flow-typed install",
-    "prettier": "prettier --write 'src/**/*.js'"
+    "prettier": "prettier --write 'src/**/*.js'",
+    "check-code-quality": "npm run flow"
   },
   "dependencies": {
     "data.maybe": "1.2.2",

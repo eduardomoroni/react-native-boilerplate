@@ -24,6 +24,8 @@ install:
 - nvm install && nvm use
 - npm install -g "npm@$(jq -r '.engines.npm' package.json)"
 - npm ci
+scripts:
+- npm run check-code-quality
 matrix:
   include:
   - os: linux
