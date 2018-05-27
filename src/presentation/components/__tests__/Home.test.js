@@ -1,5 +1,7 @@
+// @flow
+
 import React from 'react';
-import { Button } from 'react-native';
+import { Button, Text } from 'react-native';
 import { shallow } from 'enzyme';
 
 import { Home } from '../Home';
