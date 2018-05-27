@@ -20,7 +20,8 @@
     "preinstall": "chmod -R +x scripts && scripts/pre-install.sh",
     "prettier": "prettier --write 'src/**/*.js'",
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "data.maybe": "1.2.2",
@@ -42,6 +43,8 @@
     "babel-jest": "22.4.3",
     "babel-preset-flow": "6.23.0",
     "babel-preset-react-native": "4.0.0",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
     "eslint": "4.19.1",
     "eslint-config-prettier": "2.9.0",
     "eslint-plugin-prettier": "2.6.0",
@@ -51,11 +54,17 @@
     "jest": "22.4.3",
     "lint-staged": "7.1.1",
     "prettier": "1.12.1",
+    "react-dom": "16.4.0",
+    "react-native-mock": "0.3.1",
     "react-test-renderer": "16.3.1",
     "redux-devtools": "3.4.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupTestFrameworkScriptFile": "<rootDir>/src/__tests__/setup.js",
+    "testMatch": [
+      "**/__tests__/**/*.test.js?(x)"
+    ]
   },
   "engines": {
     "node": "10.1.0",
