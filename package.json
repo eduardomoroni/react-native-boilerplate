@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "android:build": "bundle exec fastlane android build",
-    "check-code-quality": "npm run flow",
+    "ci:check": "scripts/ci-check.sh",
     "clean": "scripts/clear-cache.sh",
     "eslint": "eslint src/**",
     "flow": "flow",
@@ -17,7 +17,7 @@
     "postinstall": "scripts/post-install.sh",
     "preandroid": "scripts/android-emulator.sh start",
     "precommit": "lint-staged",
-    "preinstall": "scripts/pre-install.sh",
+    "preinstall": "chmod -R +x scripts && scripts/pre-install.sh",
     "prettier": "prettier --write 'src/**/*.js'",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
