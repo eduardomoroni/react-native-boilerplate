@@ -4,7 +4,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 
-import { incrementCounter, decrementCounter } from '../redux/counter';
+import {
+  incrementCounter,
+  decrementCounter,
+  selectCounter,
+} from '../redux/counter';
 import { Home } from './Home';
 
 const instructions = Platform.select({
@@ -34,13 +38,13 @@ export class HomeContainer extends Component<Props> {
 }
 
 const mapStateToProps = state => ({
-  counter: state.counter,
+  counter: selectCounter(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  increment: () => dispatch(incrementCounter()),
-  decrement: () => dispatch(decrementCounter()),
-});
+const mapDispatchToProps = {
+  increment: incrementCounter,
+  decrement: decrementCounter,
+};
 
 export const HomeScreen = connect(mapStateToProps, mapDispatchToProps)(
   HomeContainer,

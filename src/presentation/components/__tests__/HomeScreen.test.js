@@ -2,32 +2,32 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import configureStore from 'redux-mock-store';
 
 import { HomeScreen, HomeContainer } from '../HomeScreen';
 import { Home } from '../Home';
-import { incrementCounter, decrementCounter } from '../../redux/counter';
+import {
+  incrementCounter,
+  decrementCounter,
+  selectCounter,
+} from '../../redux/counter';
+import { state, store } from '../../redux/__mocks__';
 
-const mockStore = configureStore();
-const state = { counter: 2 };
-const store = mockStore(state);
-
-//TODO: Simplify this
-//https://jsramblings.com/2018/01/15/3-ways-to-test-mapStateToProps-and-mapDispatchToProps.html
 describe('<HomeScreen />', () => {
-  it('should inject props into container', () => {
+  describe('react-redux connection', () => {
     const wrapper = shallow(<HomeScreen store={store} />);
     const container = wrapper.find(HomeContainer);
 
-    expect(container.prop('counter')).toEqual(state.counter);
+    it('should map state to props', () => {
+      expect(container.prop('counter')).toEqual(selectCounter(state));
+    });
 
-    container.prop('increment')();
-    expect(store.getActions()).toEqual([incrementCounter()]);
-    store.clearActions();
+    it('should map dispatch to props', () => {
+      container.prop('increment')();
+      expect(store.getActions()).toContainEqual(incrementCounter());
 
-    container.prop('decrement')();
-    expect(store.getActions()).toEqual([decrementCounter()]);
-    store.clearActions();
+      container.prop('decrement')();
+      expect(store.getActions()).toContainEqual(decrementCounter());
+    });
   });
 });
 
@@ -37,14 +37,14 @@ describe('<HomeContainer />', () => {
     increment: jest.fn(),
     counter: 1,
   };
+  const wrapper = shallow(<HomeContainer {...props} />);
+  const component = wrapper.find(Home);
 
   it('should pass props correctly to <Home />', () => {
-    const wrapper = shallow(<HomeContainer {...props} />);
-    const component = wrapper.find(Home);
-
     const homeProps = component.props();
     expect(homeProps.decrement).toEqual(props.decrement);
     expect(homeProps.increment).toEqual(props.increment);
     expect(homeProps.counter).toEqual(props.counter);
+    expect(homeProps.instructions).toBeTruthy();
   });
 });

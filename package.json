@@ -8,6 +8,7 @@
     "ci:check": "scripts/ci-check.sh",
     "clean": "scripts/clear-cache.sh",
     "eslint": "eslint src/**",
+    "eslint:fix": "eslint --fix src/** && npm run prettier",
     "flow": "flow",
     "flow:coverage": "flow coverage",
     "flow:install-libdefs": "flow-typed install",

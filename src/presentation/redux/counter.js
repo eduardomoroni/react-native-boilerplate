@@ -9,6 +9,9 @@ import type {
 const INCREMENT = 'increment';
 const DECREMENT = 'decrement';
 
+export const selectCounter = (state: { counter: number }): number =>
+  state.counter;
+
 export const incrementCounter = (): ActionWithNoPayload => ({
   type: INCREMENT,
 });
