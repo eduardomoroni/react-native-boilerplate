@@ -24,3 +24,6 @@ This repository is a `react-native init app` application with some libraries/too
 
 ## Scripts
 There're several useful scripts under [package.json](https://github.com/eduardomoroni/react-native-boilerplate/blob/master/package.json#L5) and [`scripts/`](https://github.com/eduardomoroni/react-native-boilerplate/tree/master/scripts) folder.
+
+## Further guidelines
+If would like to see more examples on React Native best practices take a look at [trading-card-manager](https://github.com/eduardomoroni/trading-card-manager) repository, this is a open-source project of mine and a resourceful input for posts and talks I gave.
