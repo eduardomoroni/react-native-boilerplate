@@ -1,5 +1,6 @@
 # react-native-boilerplate
-[![Build Status](https://travis-ci.org/eduardomoroni/react-native-boilerplate.svg?branch=master)](https://travis-ci.org/eduardomoroni/react-native-boilerplate)
+[![Build Status](https://travis-ci.org/eduardomoroni/react-native-boilerplate.svg?branch=master)](https://travis-ci.org/eduardomoroni/react-native-boilerplate)  
+
 Every single project I do the same, so I decided to do it once and keep it available.
 This repository is a `react-native init app` application with some libraries/tools already setup:
 - [react-native-config](https://github.com/luggit/react-native-config)
