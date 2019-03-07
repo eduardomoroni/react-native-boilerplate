@@ -1,3 +1,4 @@
+# This repository is OK, but the RN version is not that recent. Please consider not using it
 # react-native-boilerplate
 [![Build Status](https://travis-ci.org/eduardomoroni/react-native-boilerplate.svg?branch=master)](https://travis-ci.org/eduardomoroni/react-native-boilerplate)  
 
