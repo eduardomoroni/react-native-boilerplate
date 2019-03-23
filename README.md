@@ -5,7 +5,7 @@ Every single project I do the same, so I decided to do it once and keep it avail
 This repository is a `react-native init app` application with some libraries/tools already setup:
 - [react-native-config](https://github.com/luggit/react-native-config)
 - [react-native-firebase](https://github.com/invertase/react-native-firebase)
-- [react-native-i18n](https://github.com/AlexanderZaytsev/react-native-i18n)
+- [react-native-localize](https://github.com/react-native-community/react-native-localize)
 - [react-native-navigation](https://github.com/wix/react-native-navigation)
 - [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 - [redux](https://github.com/reduxjs/redux)
