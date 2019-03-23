@@ -10,8 +10,8 @@ This repository is a `react-native init app` application with some libraries/too
 - [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 - [redux](https://github.com/reduxjs/redux)
 - [enzyme](https://github.com/airbnb/enzyme)
-- [prettier](https://github.com/prettier/prettier)
-- [eslint](https://github.com/eslint/eslint) (as a prettier extension)
+- [prettier](https://github.com/prettier/prettier) (as a ESLint extension)
+- [eslint](https://github.com/eslint/eslint)
 - [flow](https://flow.org/en/)
 - [travis-ci](https://travis-ci.org/)
 
