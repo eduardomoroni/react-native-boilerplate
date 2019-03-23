@@ -1,4 +1,0 @@
-scheme("app")
-open_report(false)
-clean(true)
-skip_build(false)
